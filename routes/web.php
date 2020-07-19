@@ -17,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/factura', function () {
-    return view('factura');
-});
+Route::get('invoice', 'InvoiceController@index');
