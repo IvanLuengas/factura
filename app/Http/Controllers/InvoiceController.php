@@ -27,7 +27,7 @@ class InvoiceController extends Controller
         $items = null;
         $user = null;
 
-        $invoice->fecfactur  = date_create_from_format('Y-m-d h:s:i',$invoice->fecfactur);
+        $invoice->fecfactur  = Carbon::parse($invoice->fecfactur);        
         $InvoiceAuthorization = $config['InvoiceAuthorization'];
         $StartDate = $config['StartDate'];
         $EndDate = $config['EndDate'];
