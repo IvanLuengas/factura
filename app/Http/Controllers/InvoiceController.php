@@ -22,12 +22,10 @@ class InvoiceController extends Controller
         // data archivo config
         $config=DataConfig::getDataConfig();
         
-
-        $invoice = null;
         $items = null;
         $user = null;
 
-
+        $invoice->fecfactur = strtotime($invoice->fecfactur);
         $InvoiceAuthorization = $config['InvoiceAuthorization'];
         $StartDate = $config['StartDate'];
         $EndDate = $config['EndDate'];
@@ -43,12 +41,12 @@ class InvoiceController extends Controller
         $CustomizationID = env('CUSTOMIZATION_ID');
         $ProfileExecutionID = env('PROFILE_EXECUTION_ID');
         $ID = $Prefix.$From;
-
-        $IssueDate  = date('Y-m-d',strtotime($invoice->fecfactur));
-        $IssueTime = date('h:s:i',strtotime($invoice->fecfactur))."-05:00";
+        
+        $IssueDate  = $invoice->fecfactur->format('Y-m-d');
+        $IssueTime = $invoice->fecfactur->format('h:s:i')."-05:00";
         var_dump($IssueDate);
         var_dump($IssueTime);
-        // $InvoiceTypeCode = $items->count();
+        $InvoiceTypeCode = env('INVOICE_TYPE_CODE');
 
         // $LineCountNumeric = $items->count();
         // $InvoicePeriodStartDate = $invoice->created_at->startOfMonth()->toDateString(); 
