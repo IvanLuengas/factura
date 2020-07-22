@@ -18,6 +18,7 @@ class InvoiceController extends Controller
         // consulta DB
         $invoiceModel = new Invoice();
         $invoice = $invoiceModel->getInvoiceDesc();
+        // quitar
         $invoice = $invoice[0];
         // data archivo config
         $config=DataConfig::getDataConfig();
@@ -25,7 +26,7 @@ class InvoiceController extends Controller
         $items = null;
         $user = null;
 
-        $invoice->fecfactur = strtotime($invoice->fecfactur);
+        $invoice->fecfactur  = date_create_from_format('Y-m-d h:s:i',$invoice->fecfactur);
         $InvoiceAuthorization = $config['InvoiceAuthorization'];
         $StartDate = $config['StartDate'];
         $EndDate = $config['EndDate'];
@@ -41,9 +42,9 @@ class InvoiceController extends Controller
         $CustomizationID = env('CUSTOMIZATION_ID');
         $ProfileExecutionID = env('PROFILE_EXECUTION_ID');
         $ID = $Prefix.$From;
-        
-        $IssueDate  = $invoice->fecfactur->format('Y-m-d');
-        $IssueTime = $invoice->fecfactur->format('h:s:i')."-05:00";
+
+        $IssueDate  = $invoice->created_at->format('Y-m-d');
+        $IssueTime = $invoice->created_at->format('h:s:i')."-05:00";
         var_dump($IssueDate);
         var_dump($IssueTime);
         $InvoiceTypeCode = env('INVOICE_TYPE_CODE');
