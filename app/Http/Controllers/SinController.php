@@ -14,6 +14,6 @@ class SinController extends Controller
         // consulta DB
         $invoice = new Invoice();
         $dataInvoice = $invoice->getInvoiceData();
-        return view('index', ['invoice' => $invoice]);
+        return view('index', ['invoice' => $dataInvoice]);
     }
 }

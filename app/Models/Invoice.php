@@ -12,7 +12,7 @@ class Invoice extends Model
      *
      */
     public function getInvoiceData(){
-        $invoice = DB::select(" from snfactur WHERE fecfactur = TO_DATE('05-06-2004', 'DD-MM-YYYY')");
+        $invoice = DB::select("select * from snfactur WHERE fecfactur = TO_DATE('05-06-2004', 'DD-MM-YYYY')");
         return $invoice;
     }
 

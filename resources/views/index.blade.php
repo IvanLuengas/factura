@@ -195,12 +195,12 @@
                     <tbody>  
                     @foreach ($invoice as $i)
                         <tr>
-                            <td>{{ $i["CODFACTUR"] }}</td>
-                            <td>{{ $i["FECFACTUR"] }}</td>
-                            <td>{{ $i["CODRADICA"] }}</td>
-                            <td>{{ $i["TIDUSUAR"] }} {{ $i["IDUSUAR"] }}</td>
+                            <td>{{ $i->codfactur }}</td>
+                            <td>{{ $i->fecfactur }}</td>
+                            <td>{{ $i->codradica }}</td>
+                            <td>{{ $i->tidusuar }} {{ $i->idusuar }}</td>
                             <td><a href="detalle/" target="_blank"><button type="button" class="btn btn-sm btn-success">Detalles</button></a></td>
-<td><a href="xml/factura.xml" target="_blank"><button type="button" class="btn btn-sm btn-warning">XML</button></a></td>
+                            <td><a href="xml/factura.xml" target="_blank"><button type="button" class="btn btn-sm btn-warning">XML</button></a></td>
                         <tr>
                     @endforeach
                         <tr v-for="user, index in users">
