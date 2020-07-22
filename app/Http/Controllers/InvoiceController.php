@@ -18,7 +18,7 @@ class InvoiceController extends Controller
         // consulta DB
         $invoiceModel = new Invoice();
         $invoice = $invoiceModel->getInvoiceDesc();
-
+        $invoice = $invoice[0];
         // data archivo config
         $config=DataConfig::getDataConfig();
         
