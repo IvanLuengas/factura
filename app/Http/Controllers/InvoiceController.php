@@ -44,8 +44,10 @@ class InvoiceController extends Controller
         $ProfileExecutionID = env('PROFILE_EXECUTION_ID');
         $ID = $Prefix.$From;
 
-        $IssueDate  = $invoice->fecfactur->format('Y-m-d');
-        // $IssueTime = $invoice->created_at->format('h:s:i')."-05:00";
+        $IssueDate  = date('Y-m-d',strtotime($invoice->fecfactur));
+        $IssueTime = date('h:s:i',strtotime($invoice->fecfactur))."-05:00";
+        var_dump($IssueDate);
+        var_dump($IssueTime);
         // $InvoiceTypeCode = $items->count();
 
         // $LineCountNumeric = $items->count();
