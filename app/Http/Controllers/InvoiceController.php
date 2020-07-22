@@ -27,9 +27,7 @@ class InvoiceController extends Controller
         $items = null;
         $user = null;
 
-        // $invoice->fecfactur  = date_create_from_format('Y-m-d h:s:i',$invoice->fecfactur);
-        $fecfactur  = date_create_from_format('Y-m-d h:s:i','2004-06-05 00:00:00.000000');
-
+        $invoice->fecfactur  = date_create_from_format('Y-m-d h:s:i',$invoice->fecfactur);
         $InvoiceAuthorization = $config['InvoiceAuthorization'];
         $StartDate = $config['StartDate'];
         $EndDate = $config['EndDate'];
