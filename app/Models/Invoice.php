@@ -7,6 +7,7 @@ use DB;
 
 class Invoice extends Model
 {
+    
     /**
      * Retorna consulta de factura
      *

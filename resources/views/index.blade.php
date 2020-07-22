@@ -122,6 +122,7 @@
     </style>
     </head>
     <body>
+    @if ($config)
     <nav class="navbar navbar-dark sticky-top bg-cabezote flex-md-nowrap p-0">
         <span class="navbar col-sm-3 col-md-2 mr-0" style="color:#fff;font-weight: bold;font-size:20px;"> SNR</span>
         <div style="color:#fff;padding: 1px 15px 1px 5px;"></div>
@@ -218,6 +219,9 @@
         </main>
       </div>
     </div>
+    @else
+        No tiene configurado el archivo
+    @endif
      <!-- Bootstrap core JavaScript
     ================================================== -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -242,13 +246,12 @@
         })
     </script>
     <script>
+        
       Holder.addTheme('thumb', {
         bg: '#55595c',
         fg: '#eceeef',
         text: 'Thumbnail'
       });
-    </script>
-    <script>
         // Write on keyup event of keyword input element
         $(document).ready(function(){
             $("#search").keyup(function(){
