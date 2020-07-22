@@ -16,7 +16,7 @@ class DataConfig extends Model
         // archivo config
         $json = Storage::disk('local')->get(static::$fileConfig);
         $json = json_decode($json, true);
-        return $json;
+        return $json[0];
     }
     /**
      * valida si el archivo existe
