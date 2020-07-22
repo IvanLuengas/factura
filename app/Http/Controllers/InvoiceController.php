@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Invoice;
+use App\Models\DataConfig;
 
 class InvoiceController extends Controller
 {
@@ -12,8 +14,14 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // TODO: consulta oracle
+    {   
+        // consulta DB
+        $invoice = new Invoice();
+        $dataInvoice = $invoice->getInvoiceDesc();
+        
+        // data archivo config
+        $config=DataConfig::getDataConfig();
+
         // TODO: agregar variables willi
         return view('invoice');
     }
