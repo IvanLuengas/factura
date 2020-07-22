@@ -42,16 +42,15 @@ class InvoiceController extends Controller
         $CustomizationID = env('CUSTOMIZATION_ID');
         $ProfileExecutionID = env('PROFILE_EXECUTION_ID');
         $ID = $Prefix.$From;
-
-        $IssueDate  = $invoice->created_at->format('Y-m-d');
-        $IssueTime = $invoice->created_at->format('h:s:i')."-05:00";
-        var_dump($IssueDate);
-        var_dump($IssueTime);
+        $IssueDate  = $invoice->fecfactur->format('Y-m-d');
+        $IssueTime = $invoice->fecfactur->format('h:s:i')."-05:00";
         $InvoiceTypeCode = env('INVOICE_TYPE_CODE');
+        // $LineCountNumeric = $items->count(); // TODO: numero de productos?
+        $InvoicePeriodStartDate = $invoice->fecfactur->startOfMonth()->toDateString(); 
+        $InvoicePeriodEndDate =  $invoice->fecfactur->endOfMonth()->toDateString();
+        var_dump($InvoicePeriodStartDate);
+        var_dump($InvoicePeriodEndDate);
 
-        // $LineCountNumeric = $items->count();
-        // $InvoicePeriodStartDate = $invoice->created_at->startOfMonth()->toDateString(); 
-        // $InvoicePeriodEndDate =  $invoice->created_at->endOfMonth()->toDateString();
         $IndustryClasificationCode = '5440'; 
         $CompanyName = 'GRUPO FAMILIA S.A.S';
         $CompanyAddress = 'Carrera 4 # 76 - 98';
