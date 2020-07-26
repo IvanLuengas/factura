@@ -120,7 +120,49 @@ class InvoiceController extends Controller
 
         // $this->validateXML($xml);
         
+        $firmado = new FirmadorV2();
 
+        // locacion del certificado
+        $certificadop12 = '../../locacion/micertificado.p12';
+        // clave certificado
+        $clavecertificado = 'calvecertificado';
+  
+        // prefijo archivo xml en facturas
+        $pf = 'fv';
+  
+        // firmar factura
+        $signed = $firmado->firmar($certificadop12, $clavecertificado, $xml, $UUID, $pf);
+  
+        // nombre de archivos
+        $nit = '0'.$companyNIT;
+        // 000 si es software propio
+        $ppp = '000';
+        // año en curso
+        $aa = '20';
+        $a = str_pad($consecutive, 8, '0', STR_PAD_LEFT);
+        // nombre del xml
+        $xml_name = $pf.$nit.$ppp.$aa.$a.'.xml';
+  
+        // prefijo zip
+        $z = 'z';
+        // nombre zip
+        $fileName = $z.$nit.$ppp.$aa.$a.'.zip';
+        // nombre final zip con locacion donde se va a guardar
+        $zip_name = '../../path/tomy/file/'.$fileName;
+        // crear new zip
+        $zip = new ZipArchive;
+        $zip->open($zip_name, ZipArchive::CREATE);
+        // agregar el xml filmado 
+        $zip->addFromString($xml_name, $signed);
+        $zip->close();
+  
+        // get the contents 
+        $document = file_get_contents($zip_name);
+        // codificar
+        $contentFile =  base64_encode($document);
+  
+        // $contentFile es uno de los parametros que se envia en el body del requesta al web service     
+  
         // TODO: agregar variables willi
         dd($this->formHeadXMl());
         return view('invoice');
