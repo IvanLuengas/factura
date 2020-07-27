@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'SinController@index');
 
 Route::get('invoice', 'InvoiceController@index');
+
+Route::get('factura/enviarFactura', 'InvoiceController@sendBill');
+
+Route::get('factura/obtenerStatus', 'InvoiceController@getStatus');
+
+Route::get('factura/obtenerStatusZip', 'InvoiceController@getStatusZip');
