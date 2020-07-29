@@ -34,6 +34,8 @@ class FirmadorV2 extends Model
         $this->SignedPropertiesId = "xmldsig-".$UUID. "-signedprops";
         return $this->insertaFirma($xmlsinfirma,$doctype);
     }
+
+
     
     
     public function get_schemas($doctype){

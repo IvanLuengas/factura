@@ -50,9 +50,10 @@ class Invoice extends Model
         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wcf="http://wcf.dian.colombia">
         <soap:Header/>
             <soap:Body>
-                <wcf:GetStatus>
-                    <wcf:trackId>$trackId</wcf:trackId>
-                </wcf:GetStatus>
+            <wcf:GetNumberingRange>
+            <wcf:accountCode>899999007</wcf:accountCode><wcf:accountCodeT>899999007</wcf:accountCodeT>
+            <wcf:softwareCode>18fcbc18-9728-422e-b393-a4e27b4406a0</wcf:softwareCode>
+            </wcf:GetNumberingRange>
             </soap:Body>
         </soap:Envelope>
         XML;
