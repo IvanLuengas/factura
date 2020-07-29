@@ -50,8 +50,26 @@ class Invoice extends Model
         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wcf="http://wcf.dian.colombia">
         <soap:Header/>
             <soap:Body>
+                <wcf:GetStatus>
+                    <wcf:trackId>$trackId</wcf:trackId>
+                </wcf:GetStatus>
+            </soap:Body>
+        </soap:Envelope>
+        XML;
+        //Certificado y contraseña que se utiliza para la creación del certificado
+        $sign = new SignWebService;
+        $outPutXml = "xml/GetStatus.xml";
+        return $sign->getSOAP($xmlString,$action,$outPutXml);
+    }
+
+    public function getRangeXML($trackId,$action){
+        $xmlString = <<<XML
+        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wcf="http://wcf.dian.colombia">
+        <soap:Header/>
+            <soap:Body>
             <wcf:GetNumberingRange>
-            <wcf:accountCode>899999007</wcf:accountCode><wcf:accountCodeT>899999007</wcf:accountCodeT>
+            <wcf:accountCode>899999007</wcf:accountCode>
+            <wcf:accountCodeT>899999007</wcf:accountCodeT>
             <wcf:softwareCode>18fcbc18-9728-422e-b393-a4e27b4406a0</wcf:softwareCode>
             </wcf:GetNumberingRange>
             </soap:Body>
